@@ -1,0 +1,20 @@
+<aside class="rankings">
+    <p class="tittle">
+        Ranking de Guerreros
+    </p>
+    <div  (click)="close_modal()"
+          class="btn_close pointer">
+        <i class="far fa-times-circle"></i>
+    </div>
+    <div *ngFor="let player of players; let i = index" class="{{ positions_class[i] }} text_position">
+        <div class="position">
+            {{ i + 1 }}
+        </div>
+        <div class="war">
+            {{ player.name }}
+        </div>
+        <div class="level">
+            {{ player.level }}
+        </div>
+    </div>
+</aside>

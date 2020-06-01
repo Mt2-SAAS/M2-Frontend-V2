@@ -1,0 +1,89 @@
+<a name="register"></a>
+<div class="cap cap5">
+    <form [formGroup]="sigupForm" (ngSubmit)="send()" class="form_sign_up">
+        <h3 class="title_form_sign_up">
+            Registrate
+        </h3>
+        <div class="input_sign_up">
+            <label for="name">Nombre</label>
+            <input 
+                formControlName="real_name"
+                type="text" 
+                placeholder="Tu Nombre Real">
+        </div>
+        <div class="input_sign_up">
+            <label *ngIf="sigupForm.controls['real_name'].errors?.required && sigupForm.controls['real_name'].touched" for="name">* El Nombre es obligatorio.</label>
+            <label *ngIf="sigupForm.controls['real_name'].errors?.minlength" for="name">* Por lo menos 4 caracteres.</label>
+        </div>
+        <div class="input_sign_up">
+            <label for="email">Correo</label>
+            <input 
+                formControlName="email"
+                type="email" 
+                placeholder="ej: juan.gomez@email.com">
+        </div>
+        <div class="input_sign_up">
+            <label *ngIf="sigupForm.controls['email'].errors?.required && sigupForm.controls['email'].touched" for="name">* El Correo es obligatorio.</label>
+            <label *ngIf="sigupForm.controls['email'].errors?.pattern" for="name">* No tiene formato de correo.</label>
+        </div>
+        <div class="input_sign_up">
+            <label for="username">Usuario</label>
+            <input 
+                formControlName="login"
+                type="text"  
+                placeholder="Tu Nombre de Usuario">
+        </div>
+        <div class="input_sign_up">
+            <label *ngIf="sigupForm.controls['login'].errors?.required && sigupForm.controls['login'].touched" for="name">* El usuario es obligatorio.</label>
+            <label *ngIf="sigupForm.controls['login'].errors?.existe && sigupForm.controls['login'].touched" for="name">* El nombre de usuario ya se encuentra registrado.</label>
+            <label *ngIf="sigupForm.controls['login'].errors?.minlength" for="name">* Por lo menos 4 caracteres.</label>
+        </div>
+        <div class="input_sign_up">
+            <label for="password">Contraseña</label>
+            <input 
+                formControlName="password"
+                type="password" 
+                placeholder="*******">
+        </div>
+        <div class="input_sign_up">
+            <label *ngIf="sigupForm.controls['password'].errors?.required && sigupForm.controls['password'].touched" for="name">* El password es obligatorio.</label>
+            <label *ngIf="sigupForm.controls['password'].errors?.minlength" for="name">* Por lo menos 4 caracteres.</label>
+        </div>
+        <div class="input_sign_up">
+            <label for="confirm_password">Confirmar Contraseña</label>
+            <input 
+                formControlName="password_again"
+                type="password" 
+                placeholder="*******">
+        </div>
+        <div class="input_sign_up">
+            <label *ngIf="sigupForm.controls['password_again'].errors?.required && sigupForm.controls['password_again'].touched" for="name">* El password es obligatorio.</label>
+            <label *ngIf="sigupForm.controls['password_again'].errors?.minlength" for="name">* Por lo menos 4 caracteres.</label>
+            <label *ngIf="sigupForm.value.password != sigupForm.value.password_again" for="name">* Los password no coinciden.</label>
+        </div>
+        <div class="input_sign_up">
+            <label for="confirm_password">Codigo de Borrado</label>
+            <input 
+                formControlName="social_id"
+                type="number" 
+                placeholder="1234567">
+        </div>
+         <div class="input_sign_up">
+            <label *ngIf="sigupForm.controls['social_id'].errors?.pattern" for="name">* Por lo menos 7 caracteres.</label>
+        </div>
+        <div class="input_sign_up">
+            <label for="confirm_password">Terminos y condiciones</label>
+            <input 
+                formControlName="checkbox"
+                type="checkbox">
+        </div>
+        <button 
+            class="button pointer" 
+            type="submit"
+            [disabled]="!sigupForm.valid || sigupForm.value.password != sigupForm.value.password_again || !sigupForm.value.checkbox ">
+            Registrarse
+        </button>
+    </form>
+    <img class="character inverse_character" src="./assets/img/SM_/SM_Metin2_Character_2.png">
+</div>
+

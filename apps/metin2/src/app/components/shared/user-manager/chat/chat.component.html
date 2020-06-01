@@ -1,0 +1,27 @@
+<h2> Chat </h2>
+
+<div class="chat-window">
+
+    <div class="app-mensajes">
+
+        <div *ngFor="let message of messages" [ngClass]="{'text-right': message.from == user}" class="text-right" >
+            <span>de: {{ message.from }} hora: {{ message.date }} </span>
+            <p>
+                {{ message.message}}
+            </p>
+        </div>
+
+    </div>
+
+    <form [formGroup]="messageForm" (keyup.enter)="sendMessages()" class="input-chat">
+        <div class="input_sign_in">
+            <input
+                  formControlName="message"
+                  class="input-chat"
+                  type="text"   
+                  placeholder="Tu mensaje" 
+                  required>
+        </div>
+    </form>
+
+</div>

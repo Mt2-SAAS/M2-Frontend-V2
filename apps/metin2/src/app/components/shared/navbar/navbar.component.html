@@ -1,0 +1,31 @@
+<header class="bar">
+    <section class="barcontent">
+        <div class="server">
+            <div class="bar_logo"></div>
+            <!--<div class="state">
+                Online
+            </div>-->
+            <div class="state">
+                Offline
+            </div>
+        </div>
+        <div class="agent_action">
+            <!--Boton de Inicio de Sesión Ocultar si ya inicio la sesión-->
+            <a  (click)="show_login_modal()" 
+                [ngClass]="{'invisible': login.isAuthenticated()}"
+                id="btn_sign_in" 
+                class="sign_in">
+                Iniciar Sesión
+            </a>
+            <!-- Boton de Perfil para el menú de acciones del usuario solo mostrar si inició sesión-->
+            <a  (click)="show_profile_modal()"
+                [ngClass]="{'invisible': !login.isAuthenticated()}" 
+                class="sign_on pointer" 
+                id="btn_manager_user">
+                <span style="font-size: 4em; color: Tomato;">
+                    <i class="fas fa-user-circle"></i>
+                </span>
+            </a>
+        </div>
+    </section>
+</header>

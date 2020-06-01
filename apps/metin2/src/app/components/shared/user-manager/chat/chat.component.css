@@ -1,0 +1,77 @@
+
+.main-container{
+    margin-top: 40px;
+    margin-bottom: 150px;
+  }
+
+.puntero{
+    cursor: pointer;
+}
+
+.input-chat {
+    border: 1px solid #4080FF;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.chat-title {
+    margin: auto;
+    max-width: 300px
+}
+
+.chat-window{
+    padding: 10px;
+    width: 800;
+    height: 410px;
+    overflow: hidden;
+    border: 1px solid #000000;
+    border-radius: 20px;
+    margin: auto;
+}
+
+.btn-custom {
+    width: 300px;
+    height: 40px;
+    margin: auto;
+}
+
+.app-mensajes{
+    overflow-y: scroll;
+    height:378px;
+    /*background:gray;*/
+    padding: 5px;
+}
+
+
+/* Animaciones */
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.fast {
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}
+
+.text-right {
+    text-align: right;
+}

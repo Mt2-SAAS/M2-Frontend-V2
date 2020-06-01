@@ -1,0 +1,36 @@
+<div class="menu">
+    <div  (click)="close_modal()"
+          class="btn_close pointer">
+        <i class="far fa-times-circle"></i>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="send()" class="form_sign_in">
+        <h2 class="title_sign_in">
+            Metin2
+        </h2>
+        <div class="input_sign_in">
+            <label for="user">Usuario</label>
+            <input 
+                  formControlName="login"
+                  type="text"   
+                  placeholder="" 
+                  required>
+        </div>
+        <div class="input_sign_in">
+            <label for="new_password">Contraseña</label>
+            <input 
+                  formControlName="password"
+                  type="password" 
+                  placeholder="" 
+                  required>
+        </div>
+        <div class="center">
+          <label *ngIf="message" class="text-white" >* {{ message }} </label>
+      </div>
+        <button   class="button pointer" 
+                  type="submit"
+                  [disabled]="!loginForm.valid"
+                  >
+            Iniciar Sesión
+        </button>
+    </form>
+</div>

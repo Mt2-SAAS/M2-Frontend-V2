@@ -1,0 +1,65 @@
+<section id="manager_user" class="manager_user" [hidden]="!modal">
+    <div class="menu">
+        <div  (click)="close_modal()"
+              class="btn_close pointer">
+            <i class="far fa-times-circle"></i>
+        </div>
+        <section class="tabs_menu">
+            <button class="tabs pointer"
+                    [routerLink]="['/modal', {outlets: {'modal': ['main']}}]"
+                    routerLinkActive="active"
+                    id="default"
+                    style="border-top-left-radius: 10px;">
+                Informacion
+            </button>
+            <button class="tabs pointer"
+                    [routerLink]="['/modal', {outlets: {'modal': ['players']}}]"
+                    routerLinkActive="active" 
+                    id="default"
+                    style="border-top-left-radius: 10px;">
+                Personajes
+            </button>
+            <button class="tabs pointer"
+                    [routerLink]="['/modal', {outlets: {'modal': ['pass']}}]"
+                    routerLinkActive="active">
+                Cambio de Contraseña
+            </button>
+            <button class="tabs pointer"
+                    [routerLink]="['/modal', {outlets: {'modal': ['donations']}}]"
+                    routerLinkActive="active">
+                Donar
+            </button>
+            <button class="tabs pointer"
+                    [routerLink]="['/modal', {outlets: {'modal': ['chat']}}]"
+                    routerLinkActive="active">
+                Chat
+            </button>
+            <button class="tabs pointer"
+                    (click)="logout()">
+                Cerrar Session
+            </button>
+        </section>
+        <section class="content_menu">
+            <div class="content">
+                <router-outlet name="modal"></router-outlet>
+            </div>
+            <!-- <div id="2" class="content" [hidden]="!window_manager_player">
+                <manager-player-list></manager-player-list>
+            </div>
+            <div id="3" class="content" [hidden]="!window_manager_passwd">
+                <manager-passwd></manager-passwd>
+            </div>
+            <div id="4" class="content" [hidden]="!window_manager_donations">
+                <manager-donations></manager-donations>
+            </div>
+            <div id="5" class="content" [hidden]="!window_manager_chat">
+                <manager-chat></manager-chat>
+            </div> -->
+        </section>
+    </div>
+</section>
+
+<app-statics></app-statics>
+<app-sidebar></app-sidebar>
+<app-players></app-players>
+<app-guilds></app-guilds>
