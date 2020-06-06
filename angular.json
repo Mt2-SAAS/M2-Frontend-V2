@@ -22,7 +22,7 @@
             "main": "apps/metin2/src/main.ts",
             "polyfills": "apps/metin2/src/polyfills.ts",
             "tsConfig": "apps/metin2/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "apps/metin2/src/favicon.ico",
               "apps/metin2/src/assets"
@@ -51,7 +51,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,

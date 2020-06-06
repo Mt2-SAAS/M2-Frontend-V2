@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 // SocketService
@@ -22,18 +22,18 @@ import { AuthGuardService } from './auth/auth-guard.service';
 })
 
 export class ServicesModule {
-    static forRoot() {
-        return {
-            ngModule: ServicesModule,
-            providers: [
-                HttpService,
-                AuthenticateService,
-                AuthService,
-                AuthGuardService,
-                WebsocketService,
-            ]
-        };
-    }
+    static forRoot(): ModuleWithProviders<ServicesModule> {
+    return {
+        ngModule: ServicesModule,
+        providers: [
+            HttpService,
+            AuthenticateService,
+            AuthService,
+            AuthGuardService,
+            WebsocketService,
+        ]
+    };
+}
 }
 
 export {
