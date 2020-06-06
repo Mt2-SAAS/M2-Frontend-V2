@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 // Redux
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../store/app.reducers';
-import { Player } from '../../../../interfaces';
+import { Player } from '@metin2/api';
 
 @Component({
   selector: 'manager-player-list',

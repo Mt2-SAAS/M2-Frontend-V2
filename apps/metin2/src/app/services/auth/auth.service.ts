@@ -5,7 +5,7 @@ import { HttpService } from '../http/http.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 // Interfaces
-import { User } from '../../interfaces/';
+import { User } from '@metin2/api';
 
 // Store
 import { Store } from '@ngrx/store';

@@ -1,11 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
-import { 
+import {
     LoadGuilds,
     LoadPlayers,
     LoadError,
 } from '../actions';
 //Interfaces
-import { Guild , Player} from '../../interfaces/';
+import { Guild , Player} from '@metin2/api';
 
 
 export interface RankingsState {

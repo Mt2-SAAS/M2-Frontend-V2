@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 // Interfaces
-import { Player } from '../../../../interfaces/';
+import { Player } from '@metin2/api';
 
 // Redux
 import { Store } from '@ngrx/store';

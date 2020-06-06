@@ -1,10 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
-import { 
+import {
     LoadMessages,
     AddMessage
 } from '../actions';
 //Interfaces
-import { Message } from '../../interfaces/';
+import { Message } from '@metin2/api';
 
 
 export interface MessageState {

@@ -11,7 +11,7 @@ import { environment } from '@env/environment';
 export class IntroComponent implements OnInit {
 
   serverName: string
-  
+
   constructor() { }
 
   ngOnInit() {

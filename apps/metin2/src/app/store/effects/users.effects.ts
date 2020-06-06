@@ -14,7 +14,7 @@ import * as usersActions from '../actions';
 import { AuthenticateService } from '../../services/services.module';
 
 // Interface
-import { UserLogin } from '../../interfaces/';
+import { UserLogin } from '@metin2/api';
 
 @Injectable()
 export class UsersEffects {

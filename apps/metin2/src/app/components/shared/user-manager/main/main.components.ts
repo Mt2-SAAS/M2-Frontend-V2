@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../../../store/app.reducers';
 
 // interfaces
-import { UserLogin } from '../../../../interfaces/user.simple';
+import { UserLogin } from '@metin2/api';
 
 
 @Component({

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AccountSend } from '../../interfaces/account';
-import { User, CHPass } from '../../interfaces/';
+import { AccountSend, User, CHPass } from '@metin2/api';
 import { environment } from '@env/environment';
 // Redux
 import { Store } from '@ngrx/store';

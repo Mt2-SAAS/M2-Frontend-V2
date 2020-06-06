@@ -44,7 +44,7 @@ export class PasswdComponent implements OnInit {
       this.show_message('Contraseña cambiada con exito');
       // Clean form
       this.form.reset();
-    }, 
+    },
     () => {
       this.show_message('Contraseña incorrecta');
     })
@@ -55,7 +55,7 @@ export class PasswdComponent implements OnInit {
     setTimeout(() => {
       this.message = null
     }, 3000)
-    
+
   }
 
 }

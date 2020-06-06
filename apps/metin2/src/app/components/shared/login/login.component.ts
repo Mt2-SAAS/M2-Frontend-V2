@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   modal: boolean;
 
-  constructor(   
+  constructor(
     private store: Store<AppState>
   ) {}
 

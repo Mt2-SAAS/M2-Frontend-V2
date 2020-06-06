@@ -34,7 +34,7 @@
               "node_modules/@fortawesome/fontawesome-free/scss/brands.scss",
               "apps/metin2/src/normalize.scss",
               "apps/metin2/src/styles.scss"
-              
+
             ],
             "scripts": []
           },
@@ -130,6 +130,29 @@
           }
         }
       }
+    },
+    "api": {
+      "root": "libs/api",
+      "sourceRoot": "libs/api/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/api/tsconfig.lib.json", "libs/api/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/api/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "tsConfig": "libs/api/tsconfig.spec.json",
+            "setupFile": "libs/api/src/test-setup.ts",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "prefix": "app"
     }},
   "defaultProject": "metin2"
 }

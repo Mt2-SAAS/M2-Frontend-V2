@@ -9,24 +9,24 @@
         </h2>
         <div class="input_sign_in">
             <label for="user">Usuario</label>
-            <input 
+            <input
                   formControlName="login"
-                  type="text"   
-                  placeholder="" 
+                  type="text"
+                  placeholder=""
                   required>
         </div>
         <div class="input_sign_in">
             <label for="new_password">Contraseña</label>
-            <input 
+            <input
                   formControlName="password"
-                  type="password" 
-                  placeholder="" 
+                  type="password"
+                  placeholder=""
                   required>
         </div>
         <div class="center">
           <label *ngIf="message" class="text-white" >* {{ message }} </label>
       </div>
-        <button   class="button pointer" 
+        <button   class="button pointer"
                   type="submit"
                   [disabled]="!loginForm.valid"
                   >

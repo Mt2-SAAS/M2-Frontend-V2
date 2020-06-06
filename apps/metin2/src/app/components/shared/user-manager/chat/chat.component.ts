@@ -11,7 +11,7 @@ import { AppState } from '../../../../store/app.reducers';
 import { AddMessage } from '../../../../store/actions';
 
 // Interfaces
-import { Message } from '../../../../interfaces';
+import { Message } from '@metin2/api';
 import { Subscription } from 'rxjs';
 
 
@@ -31,7 +31,7 @@ export class ChatComponet implements OnInit, OnDestroy {
     private store: Store<AppState>,
     private auth: AuthService,
     private ws: WebsocketService,
-  ) { 
+  ) {
     this.messageForm = new FormGroup({
       message : new FormControl('', [
         Validators.required,
@@ -41,7 +41,7 @@ export class ChatComponet implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    
+
     this.store.select('user').subscribe(({user}) => {
       this.user = user.login
     });
@@ -68,7 +68,7 @@ export class ChatComponet implements OnInit, OnDestroy {
 
   sendMessages() {
     const messageValue = this.messageForm.value.message
-    const dateValue = new Date().toDateString() 
+    const dateValue = new Date().toDateString()
     const payload: Message = {
       from: this.user,
       date: dateValue,

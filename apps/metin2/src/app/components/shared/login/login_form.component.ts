@@ -6,14 +6,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth/auth.service';
 
 // Interfaces
-import { User } from '../../../interfaces/user.simple';
+import { User } from '@metin2/api';
 
 // Redux
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store/app.reducers';
 import { HiddenLoginModal, AddToken, ShowProfileModal } from '../../../store/actions';
-
-
 
 @Component({
     selector: 'loginForm',
@@ -76,4 +74,3 @@ export class LoginFormComponent {
       this.store.dispatch(HiddenLoginModal(HiddenLoginModal({hidden: true})))
     }
 }
-

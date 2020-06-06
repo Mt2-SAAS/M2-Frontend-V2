@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { 
-  ShowLoginModal, 
+import {
+  ShowLoginModal,
   HiddenLoginModal,
   ShowRankingGuildModal,
   HiddenRankingGuildModal,
@@ -24,10 +24,10 @@ export const UIInitialState: UIState = {
     modal_ranking_guild: false,
     modal_ranking_player: false
 }
- 
+
 const _UIReducer = createReducer(UIInitialState,
   on(ShowLoginModal, (state, {show}) => ({
-      ...state, 
+      ...state,
       modal_login: show
     })),
   on(HiddenLoginModal, (state, {hidden}) => ({
@@ -59,7 +59,7 @@ const _UIReducer = createReducer(UIInitialState,
     modal_profile: !hidden
   }))
 );
- 
+
 export function UIReducer(state, action) {
   return _UIReducer(state, action);
 }

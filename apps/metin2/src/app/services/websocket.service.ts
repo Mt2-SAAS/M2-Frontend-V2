@@ -4,14 +4,14 @@ import { Injectable } from "@angular/core";
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/app.reducers';
 
-// Import Socket 
+// Import Socket
 import { Socket } from 'ngx-socket-io';
 
 // RXJS
 import { Observable } from 'rxjs';
 
 // Interface
-import { UserLogin } from '../interfaces';
+import { UserLogin } from '@metin2/api';
 
 @Injectable()
 export class WebsocketService {
@@ -48,7 +48,7 @@ export class WebsocketService {
     }
 
     websocketLogin() {
-        const { login } = this.user; 
+        const { login } = this.user;
         this.emit('config-user', {login}, () => {})
     }
 

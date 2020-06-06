@@ -19,8 +19,10 @@
       "dom"
     ],
     "paths": {
+      "@metin2/*": ["libs/*"],
       "@default/*": ["apps/metin2/src/app/*"],
       "@env/*": ["apps/metin2/src/environments/*"],
+      "@metin2/api": ["libs/api/src/index.ts"]
     }
   },
   "angularCompilerOptions": {

@@ -12,7 +12,7 @@ import * as rankingsActions from '../actions';
 import { HttpService } from '../../services/services.module';
 
 // Interface
-import { DjangoResponse } from '../../interfaces/';
+import { DjangoResponse } from '@metin2/api';
 
 @Injectable()
 export class UIEffects {

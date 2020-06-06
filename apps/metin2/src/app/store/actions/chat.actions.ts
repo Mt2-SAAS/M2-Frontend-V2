@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
-// interface 
-import { Message } from '../../interfaces';
+// interface
+import { Message } from '@metin2/api';
 
 
 export const LoadMessages = createAction(
@@ -14,4 +14,3 @@ export const AddMessage = createAction(
     '[WS] Add Message',
     props<{message: Message}>()
 );
-

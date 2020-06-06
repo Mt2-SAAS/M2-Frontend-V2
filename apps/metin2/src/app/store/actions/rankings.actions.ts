@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
 // Interfaces
-import { Guild, Player } from '../../interfaces/';
+import { Guild, Player } from '@metin2/api';
 
 // Guild Actions
 

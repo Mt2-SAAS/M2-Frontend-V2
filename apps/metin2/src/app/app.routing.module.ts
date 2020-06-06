@@ -16,8 +16,8 @@ import { PasswdComponent } from './components/shared/user-manager/password/passw
 import { PlayersListComponent } from './components/shared/user-manager/players/players.component';
 
 const RootRoutes: Routes = [
-    { 
-        path: '', 
+    {
+        path: '',
         component: MainComponent,
     },
     {

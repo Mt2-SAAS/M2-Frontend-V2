@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http/http.service';
-import { AccountSend } from '../interfaces/account';
+import { AccountSend } from '@metin2/api';
 
 
 @Injectable({

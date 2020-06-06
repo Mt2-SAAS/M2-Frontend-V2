@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { 
+import {
     AddToken,
     DeleteToken,
     AddUser,
@@ -10,7 +10,7 @@ import {
     AddPlayerError
 } from '../actions';
 
-import { UserLogin, Player } from '../../interfaces/';
+import { UserLogin, Player } from '@metin2/api';
 
 
 export interface UsersState {

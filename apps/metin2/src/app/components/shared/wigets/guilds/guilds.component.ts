@@ -14,7 +14,7 @@ import { ShowRankingGuildModal } from '../../../../store/actions';
 export class GuildsComponent implements OnInit {
 
   modal: boolean;
-  
+
   constructor(
       private store: Store<AppState>
   ) {}
@@ -29,6 +29,3 @@ export class GuildsComponent implements OnInit {
     this.store.dispatch(ShowRankingGuildModal({show: true}))
   }
 }
-
-
-

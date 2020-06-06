@@ -7,7 +7,7 @@ import { AuthService } from '../../../../services/auth/auth.service';
 // Redux
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../store/app.reducers';
-import { 
+import {
   HiddenProfileModal,
 } from '../../../../store/actions';
 
@@ -31,7 +31,7 @@ export class UserManagerComponent implements OnInit {
 
   ngOnInit() {
     this.store.select('ui').subscribe(({
-      modal_profile, 
+      modal_profile,
     }) => {
       this.modal = modal_profile;
     });

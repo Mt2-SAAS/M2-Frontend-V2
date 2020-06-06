@@ -1,0 +1,51 @@
+# exclude: "services/utils/pg/"
+repos:
+-   repo: https://github.com/psf/black
+    rev: 19.3b0
+    hooks:
+    -   id: black
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+    -   id: check-byte-order-marker
+    -   id: check-builtin-literals
+    -   id: check-case-conflict
+    -   id: check-docstring-first
+    -   id: check-json
+    -   id: check-merge-conflict
+    -   id: check-symlinks
+    -   id: debug-statements
+    -   id: detect-private-key
+    -   id: fix-encoding-pragma
+    -   id: flake8
+    -   id: forbid-new-submodules
+    -   id: mixed-line-ending
+-   repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.4.2
+    hooks:
+    -   id: python-check-blanket-noqa
+    -   id: python-check-mock-methods
+    -   id: python-no-eval
+    -   id: python-no-log-warn
+    -   id: python-use-type-annotations
+-   repo: https://github.com/asottile/pyupgrade
+    rev: v1.22.1
+    hooks:
+    -   id: pyupgrade
+-   repo: local
+    hooks:
+      - id: bandit
+        name: Check common security errors
+        entry: bandit -q -r services/backfill/trth
+        pass_filenames: false
+        language: system
+        types: [python]
+      - id: pytest
+        name: Check unit tests pass
+        entry: pytest --rootdir=services/backfill/
+        pass_filenames: false
+        language: system
+        types: [python]
