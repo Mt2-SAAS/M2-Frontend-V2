@@ -3,7 +3,7 @@
           class="btn_close pointer">
         <i class="far fa-times-circle"></i>
     </div>
-    <form [formGroup]="loginForm" (ngSubmit)="send()" class="form_sign_in">
+    <form [formGroup]="form" (ngSubmit)="send()" class="form_sign_in">
         <h2 class="title_sign_in">
             Metin2
         </h2>
@@ -16,8 +16,8 @@
                   required>
         </div>
 
-        <div class="input_sign_in_div" *ngIf="loginForm.controls['login'].errors?.required && loginForm.controls['login'].touched"> * El Usuario es obligatorio.</div>
-        <div class="input_sign_in_div" *ngIf="loginForm.controls['login'].errors?.minlength" for="login">* Por lo menos 4 caracteres.</div>
+        <div class="input_sign_in_div" *ngIf="form.controls['login'].errors?.required && form.controls['login'].touched"> * El Usuario es obligatorio.</div>
+        <div class="input_sign_in_div" *ngIf="form.controls['login'].errors?.minlength" for="login">* Por lo menos 4 caracteres.</div>
 
         <div class="input_sign_in">
             <label for="password">Contraseña</label>
@@ -28,15 +28,15 @@
                   required>
         </div>
 
-        <div class="input_sign_in_div" *ngIf="loginForm.controls['password'].errors?.required && loginForm.controls['password'].touched"> * La contraseña es obligatoria.</div>
-        <div class="input_sign_in_div" *ngIf="loginForm.controls['password'].errors?.minlength"> * Por lo menos 4 caracteres. </div>
+        <div class="input_sign_in_div" *ngIf="form.controls['password'].errors?.required && form.controls['password'].touched"> * La contraseña es obligatoria.</div>
+        <div class="input_sign_in_div" *ngIf="form.controls['password'].errors?.minlength"> * Por lo menos 4 caracteres. </div>
 
         <div class="center">
           <label *ngIf="message" class="text-white" >* {{ message }} </label>
       </div>
         <button   class="button pointer"
                   type="submit"
-                  [disabled]="!loginForm.valid"
+                  [disabled]="!form.valid"
                   >
             Iniciar Sesión
         </button>
