@@ -2,12 +2,12 @@ import { Component  } from '@angular/core';
 import { Router } from '@angular/router';
 
 // Services
-import { AuthService } from '../../../services/auth/auth.service';
+import { AuthService } from '@metin2/api';
 
 // Redux
 import { Store } from '@ngrx/store'
-import { AppState } from '../../../store/app.reducers';
-import { ShowLoginModal, ShowProfileModal } from '../../../store/actions';
+import { AppState } from '@store';
+import { ShowLoginModal, ShowProfileModal } from '@store/actions';
 
 
 @Component({

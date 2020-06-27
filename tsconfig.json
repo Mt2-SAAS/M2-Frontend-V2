@@ -19,8 +19,14 @@
       "dom"
     ],
     "paths": {
+      "@metin2/*": ["libs/*"],
       "@default/*": ["apps/metin2/src/app/*"],
       "@env/*": ["apps/metin2/src/environments/*"],
+      "@metin2/api": ["libs/api/src/index.ts"],
+      "@store": ["libs/redux/src/lib/index.ts"],
+      "@store/actions": ["libs/redux/src/lib/store/actions/index.ts"],
+      "@store/effects": ["libs/redux/src/lib/store/effects/index.ts"],
+      "@store/reducers": ["libs/redux/src/lib/store/reducera/index.ts"]
     }
   },
   "angularCompilerOptions": {

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 // importando interfaces
-import { Account } from '../../../interfaces/account';
-import { SignupService } from '../../../services/signup.service';
+import { Account } from '@metin2/api';
+import { SignupService } from '@metin2/api';
 
 // RXJS
 import { Observable } from 'rxjs';

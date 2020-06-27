@@ -2,14 +2,14 @@ import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 
 // Services
-import { AuthService } from '../../../../services/auth/auth.service';
+import { AuthService } from '@metin2/api';
 
 // Redux
 import { Store } from '@ngrx/store';
-import { AppState } from '../../../../store/app.reducers';
-import { 
+import { AppState } from '@store';
+import {
   HiddenProfileModal,
-} from '../../../../store/actions';
+} from '@store/actions';
 
 
 @Component({
@@ -31,7 +31,7 @@ export class UserManagerComponent implements OnInit {
 
   ngOnInit() {
     this.store.select('ui').subscribe(({
-      modal_profile, 
+      modal_profile,
     }) => {
       this.modal = modal_profile;
     });

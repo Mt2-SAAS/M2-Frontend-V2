@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 // Services
-import { HttpService } from '../../../../services/http/http.service';
+import { HttpService } from '@metin2/api';
 // Store
-import { Store } from '@ngrx/store';
-import { AppState } from '../../../../store/app.reducers';
 
 @Component({
   selector: 'manager-passwd',
@@ -44,7 +42,7 @@ export class PasswdComponent implements OnInit {
       this.show_message('Contraseña cambiada con exito');
       // Clean form
       this.form.reset();
-    }, 
+    },
     () => {
       this.show_message('Contraseña incorrecta');
     })
@@ -55,7 +53,7 @@ export class PasswdComponent implements OnInit {
     setTimeout(() => {
       this.message = null
     }, 3000)
-    
+
   }
 
 }

@@ -5,7 +5,7 @@ import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { MainComponent } from './main/main.component';
 
 // Auth Guard
-import { AuthGuardService } from './services/auth/auth-guard.service';
+import { AuthGuardService } from '@metin2/api';
 
 
 // Components
@@ -16,8 +16,8 @@ import { PasswdComponent } from './components/shared/user-manager/password/passw
 import { PlayersListComponent } from './components/shared/user-manager/players/players.component';
 
 const RootRoutes: Routes = [
-    { 
-        path: '', 
+    {
+        path: '',
         component: MainComponent,
     },
     {

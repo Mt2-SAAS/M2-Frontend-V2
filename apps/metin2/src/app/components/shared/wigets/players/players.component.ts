@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 // Store
 import { Store } from '@ngrx/store'
-import { AppState } from '../../../../store/app.reducers'
-import { ShowRankingPlayerModal, HiddenRankingPlayerModal } from '../../../../store/actions';
+import { AppState } from '@store'
+import { ShowRankingPlayerModal } from '@store/actions';
 
 @Component({
   selector: 'app-players',
