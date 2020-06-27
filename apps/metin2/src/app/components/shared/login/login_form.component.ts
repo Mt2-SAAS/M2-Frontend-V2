@@ -60,8 +60,7 @@ export class LoginFormComponent {
               this.store.dispatch(ShowProfileModal({show: true}));
               this.router.navigate(['/modal', {outlets: {'modal': ['main']}}])
           },
-          err => {
-              console.log(err);
+          () => { // Handle error
               this.message = 'Nombre de usuario o contraseña incorrecta';
               setTimeout(() => {
                 this.message = '';
