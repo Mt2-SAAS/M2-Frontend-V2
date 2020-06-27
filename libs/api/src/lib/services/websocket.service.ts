@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 
 // Store
 import { Store } from '@ngrx/store';
-import { AppState } from '../store/app.reducers';
+import { AppState } from '@store';
 
 // Import Socket
 import { Socket } from 'ngx-socket-io';

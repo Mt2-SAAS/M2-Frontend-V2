@@ -9,8 +9,8 @@ import { User } from '@metin2/api';
 
 // Store
 import { Store } from '@ngrx/store';
-import { AppState } from '../../store/app.reducers';
-import { DeleteToken, DeleteUser } from '../../store/actions';
+import { AppState } from '@store';
+import { DeleteToken, DeleteUser } from '@store/actions';
 
 const helper = new JwtHelperService();
 

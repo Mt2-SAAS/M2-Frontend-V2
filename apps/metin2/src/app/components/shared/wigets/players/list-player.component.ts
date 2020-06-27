@@ -5,8 +5,8 @@ import { Player } from '@metin2/api';
 
 // Redux
 import { Store } from '@ngrx/store';
-import { AppState } from '../../../../store/app.reducers';
-import { HiddenRankingPlayerModal } from '../../../../store/actions';
+import { AppState } from '@store';
+import { HiddenRankingPlayerModal } from '@store/actions';
 
 @Component({
   selector: 'ListPlayer',

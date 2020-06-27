@@ -13,10 +13,10 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 // Effects
-import { EffectsArray } from './store/effects';
+import { EffectsArray } from '@store/effects';
 
 // Reducers
-import { appReducers } from './store/app.reducers';
+import { appReducers } from '@store';
 
 // APP Component
 import { AppComponent } from './app.component';
@@ -25,7 +25,7 @@ import { MainComponent } from './main/main.component';
 // Modules
 import { PagesModule } from './components/pages/pages.module';
 import { SharedModule } from './components/shared/shared.module';
-import { ServicesModule } from './services/services.module';
+import { ServicesModule } from '@metin2/api';
 
 // Router
 import { AppRoutingModule } from './app.routing.module';
@@ -34,13 +34,13 @@ import { AppRoutingModule } from './app.routing.module';
 import { environment } from '@env/environment';
 
 // Token getter
-import { token_getter } from './services/token-getter';
+import { token_getter } from '@metin2/api';
 
 // SocketIO
 import { SocketIoModule, SocketIoConfig} from 'ngx-socket-io';
 
 // Error Interceptors
-import { ErrorInterceptor } from './services/error-interceptor';
+import { ErrorInterceptor } from '@metin2/api';
 
 // JWT Config
 const JWTConfig: JwtModuleOptions = {

@@ -3,9 +3,9 @@ import { Component, OnInit } from "@angular/core";
 // Interfaces
 import { Guild } from '@metin2/api';
 // Redux
-import { AppState } from '../../../../store/app.reducers';
+import { AppState } from '@store';
 import { Store } from '@ngrx/store';
-import { HiddenRankingGuildModal } from '../../../../store/actions';
+import { HiddenRankingGuildModal } from '@store/actions';
 
 
 @Component({

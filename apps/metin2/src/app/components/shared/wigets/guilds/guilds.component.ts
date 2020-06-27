@@ -3,8 +3,8 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 
 // Redux
 import { Store } from '@ngrx/store'
-import { AppState } from '../../../../store/app.reducers'
-import { ShowRankingGuildModal } from '../../../../store/actions';
+import { AppState } from '@store'
+import { ShowRankingGuildModal } from '@store/actions';
 
 @Component({
   selector: 'app-guilds',

@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 // importando interfaces
 import { Account } from '@metin2/api';
-import { SignupService } from '../../../services/signup.service';
+import { SignupService } from '@metin2/api';
 
 // RXJS
 import { Observable } from 'rxjs';

@@ -5,10 +5,10 @@ import { Title } from '@angular/platform-browser';
 
 // Redux
 import { Store } from '@ngrx/store';
-import { AppState } from '../store/app.reducers';
-import { AddToken } from '../store/actions';
+import { AppState } from '@store';
+import { AddToken } from '@store/actions';
 // Services
-import { AuthService } from '../services/auth/auth.service';
+import { AuthService } from '@metin2/api';
 
 // Environments
 import { environment } from '@env/environment';

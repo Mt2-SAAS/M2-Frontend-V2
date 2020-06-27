@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 // Redux
 import { Store } from '@ngrx/store';
-import { AppState } from '../../../../store/app.reducers';
+import { AppState } from '@store';
 
 // interfaces
 import { UserLogin } from '@metin2/api';

@@ -9,7 +9,7 @@ import { of } from 'rxjs';
 import * as rankingsActions from '../actions';
 
 // Service
-import { HttpService } from '../../services/services.module';
+import { HttpService } from '@metin2/api';
 
 // Interface
 import { DjangoResponse } from '@metin2/api';

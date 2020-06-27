@@ -3,15 +3,15 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 // Servicios
-import { AuthService } from '../../../services/auth/auth.service';
+import { AuthService } from '@metin2/api';
 
 // Interfaces
 import { User } from '@metin2/api';
 
 // Redux
 import { Store } from '@ngrx/store';
-import { AppState } from '../../../store/app.reducers';
-import { HiddenLoginModal, AddToken, ShowProfileModal } from '../../../store/actions';
+import { AppState } from '@store';
+import { HiddenLoginModal, AddToken, ShowProfileModal } from '@store/actions';
 
 @Component({
     selector: 'loginForm',

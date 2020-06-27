@@ -7,10 +7,12 @@ import { WebsocketService } from './websocket.service';
 // import services
 import { HttpService } from './http/http.service';
 import { AuthenticateService } from './http/authenticate.service';
+import { SignupService } from './signup.service';
 
 // Auth Services
 import { AuthService } from './auth/auth.service';
 import { AuthGuardService } from './auth/auth-guard.service';
+import { ErrorInterceptor } from './error-interceptor';
 
 @NgModule({
     declarations: [],
@@ -23,20 +25,17 @@ import { AuthGuardService } from './auth/auth-guard.service';
 
 export class ServicesModule {
     static forRoot(): ModuleWithProviders<ServicesModule> {
-    return {
-        ngModule: ServicesModule,
-        providers: [
-            HttpService,
-            AuthenticateService,
-            AuthService,
-            AuthGuardService,
-            WebsocketService,
-        ]
-    };
+        return {
+            ngModule: ServicesModule,
+            providers: [
+                HttpService,
+                AuthenticateService,
+                AuthService,
+                AuthGuardService,
+                WebsocketService,
+                SignupService,
+                ErrorInterceptor
+            ]
+        };
+    }
 }
-}
-
-export {
-    HttpService,
-    AuthenticateService
-};

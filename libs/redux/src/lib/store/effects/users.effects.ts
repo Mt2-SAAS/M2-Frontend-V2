@@ -11,7 +11,7 @@ import { of } from 'rxjs';
 import * as usersActions from '../actions';
 
 // Services
-import { AuthenticateService } from '../../services/services.module';
+import { AuthenticateService } from '@metin2/api';
 
 // Interface
 import { UserLogin } from '@metin2/api';

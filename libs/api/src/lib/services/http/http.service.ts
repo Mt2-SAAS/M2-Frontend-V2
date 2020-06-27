@@ -4,7 +4,7 @@ import { AccountSend, User, CHPass } from '@metin2/api';
 import { environment } from '@env/environment';
 // Redux
 import { Store } from '@ngrx/store';
-import { AppState } from '../../store/app.reducers';
+import { AppState } from '@store';
 
 @Injectable()
 export class HttpService {

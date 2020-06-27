@@ -2,13 +2,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 // Services
-import { WebsocketService } from '../../../../services/websocket.service';
-import { AuthService } from '../../../../services/auth/auth.service';
+import { WebsocketService } from '@metin2/api';
+import { AuthService } from '@metin2/api';
 
 // Store
 import { Store } from '@ngrx/store';
-import { AppState } from '../../../../store/app.reducers';
-import { AddMessage } from '../../../../store/actions';
+import { AppState } from '@store';
+import { AddMessage } from '@store/actions';
 
 // Interfaces
 import { Message } from '@metin2/api';
