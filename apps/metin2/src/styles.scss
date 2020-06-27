@@ -424,6 +424,13 @@ html,body {
         font-size: 1.5em;
         color: white;
     }
+
+    .form_sign_in .input_sign_in_div {
+        text-align: center;
+        font-size: 1.2em;
+        color: white;
+    }
+
     .form_sign_in .input_sign_in input {
         font-size: 1.5em;
         border-radius: 10px;
@@ -977,6 +984,13 @@ html,body {
         padding-left: 10px;
         flex-grow: 1;
         flex-basis: 0;
+    }
+
+
+    .form_chanpass .input_sign_in_div {
+        text-align: center;
+        font-size: 1.2em;
+        color: white;
     }
     .form_chanpass > .button {
         font-size: 1.5em;

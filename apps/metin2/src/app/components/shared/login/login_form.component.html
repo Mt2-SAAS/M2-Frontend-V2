@@ -15,14 +15,22 @@
                   placeholder=""
                   required>
         </div>
+
+        <div class="input_sign_in_div" *ngIf="loginForm.controls['login'].errors?.required && loginForm.controls['login'].touched"> * El Usuario es obligatorio.</div>
+        <div class="input_sign_in_div" *ngIf="loginForm.controls['login'].errors?.minlength" for="login">* Por lo menos 4 caracteres.</div>
+
         <div class="input_sign_in">
-            <label for="new_password">Contraseña</label>
+            <label for="password">Contraseña</label>
             <input
                   formControlName="password"
                   type="password"
                   placeholder=""
                   required>
         </div>
+
+        <div class="input_sign_in_div" *ngIf="loginForm.controls['password'].errors?.required && loginForm.controls['password'].touched"> * La contraseña es obligatoria.</div>
+        <div class="input_sign_in_div" *ngIf="loginForm.controls['password'].errors?.minlength"> * Por lo menos 4 caracteres. </div>
+
         <div class="center">
           <label *ngIf="message" class="text-white" >* {{ message }} </label>
       </div>
