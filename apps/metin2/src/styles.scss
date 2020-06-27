@@ -28,6 +28,37 @@ html,body {
     display: none;
 }
 
+.madera {
+    width: 125px;
+    height: 30px;
+    background: #5c5c5c url('./assets/img/boton_enviar.png');
+    color: #f2ebd7 !important;
+    border: none;
+    font-size: 12px;
+    padding-bottom: 2px;
+    margin-top: 3%;
+    align-self: center;
+    // font-family: 'Playfair Display', serif;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.madera:disabled {
+    width: 125px;
+    height: 30px;
+    background: #5c5c5c url('./assets/img/boton_enviar.png');
+    opacity: 0.7;
+    color: #f2ebd7 !important;
+    border: none;
+    font-size: 12px;
+    padding-bottom: 2px;
+    margin-top: 3%;
+    align-self: center;
+    // font-family: 'Playfair Display', serif;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 980px) and (orientation: portrait) {
     /* Barra de menú */
     .bar {
