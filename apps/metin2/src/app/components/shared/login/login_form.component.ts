@@ -26,14 +26,14 @@ export class LoginFormComponent {
         login: null,
         password: null
     };
-    loginForm: FormGroup;
+    form: FormGroup;
 
     constructor(
         private login: AuthService,
         private store: Store<AppState>,
         private router: Router
     ) {
-        this.loginForm = new FormGroup({
+        this.form = new FormGroup({
             login : new FormControl('', [
               Validators.required,
               Validators.minLength(4)
@@ -43,18 +43,18 @@ export class LoginFormComponent {
               Validators.minLength(4)
             ])
           });
-          this.loginForm.reset(this.user);
+          this.form.reset(this.user);
     }
 
     send() {
-        this.login.login( this.loginForm.value ).subscribe(
+        this.login.login( this.form.value ).subscribe(
           ({token}) => {
               // Add token to store
               localStorage.setItem('token', token);
               // Add to redux state
               this.store.dispatch(AddToken({token: token}))
               // Clean Form
-              this.loginForm.reset(this.user);
+              this.form.reset(this.user);
               // Close Modal
               this.store.dispatch(HiddenLoginModal({hidden: true}));
               this.store.dispatch(ShowProfileModal({show: true}));

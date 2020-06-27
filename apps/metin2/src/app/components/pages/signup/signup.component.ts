@@ -20,7 +20,7 @@ import { Observable } from 'rxjs';
 })
 export class SignupComponent implements OnInit {
 
-  sigupForm: FormGroup;
+  form: FormGroup;
   username: boolean;
 
   checkbox: boolean;
@@ -38,7 +38,7 @@ export class SignupComponent implements OnInit {
   constructor(
     public service: SignupService
   ) {
-    this.sigupForm = new FormGroup({
+    this.form = new FormGroup({
       login: new FormControl('', [
         Validators.required,
         Validators.minLength(4)
@@ -67,7 +67,7 @@ export class SignupComponent implements OnInit {
         Validators.required
       ])
     });
-    this.sigupForm.reset(this.account);
+    this.form.reset(this.account);
    }
 
   ngOnInit() {
@@ -75,11 +75,11 @@ export class SignupComponent implements OnInit {
 
 
   send() {
-    const data = this.sigupForm.value;
+    const data = this.form.value;
     delete data.password_again;
     delete data.checkbox;
     this.service.signup(data);
-    this.sigupForm.reset(this.account);
+    this.form.reset(this.account);
   }
 
   public verifyUser(control: FormControl): Promise<any> | Observable<any> {
