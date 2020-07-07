@@ -43,18 +43,27 @@ export class WebsocketService {
         return this.socket.fromEvent(event);
     }
 
-    emit(event: string, payload: any, callback?: Function): void {
+    emit(event: string, payload?: any, callback?: Function): void {
         this.socket.emit(event, payload, callback);
     }
 
     websocketLogin() {
+        if(!this.socketStatus) {
+            this.socket.connect();
+        }
         const { login } = this.user;
-        this.emit('config-user', {login}, () => {})
+        const color = localStorage.getItem('color') ? localStorage.getItem('color') : null;
+        this.emit('config-user', {login, color});
     }
 
     websocketLogout() {
-        const payload = {login: null};
-        this.emit('config-user', payload, () => {})
+        // const payload = {login: null};
+        // this.emit('disconnect');
+        if(localStorage.getItem('color')) {
+            localStorage.removeItem('color');
+        }
+        this.socketStatus = false;
+        this.socket.disconnect();
     }
 
 }

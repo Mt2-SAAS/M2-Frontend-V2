@@ -39,7 +39,15 @@ export interface DjangoResponse {
 export interface Message {
     from: string,
     date: string,
+    color?: string,
     message?: any,
+}
+
+export interface WSUser {
+    id: string,
+    name: string,
+    status: boolean,
+    color: string
 }
 
 export interface Player {

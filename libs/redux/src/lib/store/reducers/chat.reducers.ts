@@ -1,17 +1,21 @@
 import { createReducer, on } from '@ngrx/store';
 import {
     LoadMessages,
-    AddMessage
+    AddMessage,
+    LoadWSUsers
 } from '../actions';
 //Interfaces
-import { Message } from '@metin2/api';
+import { Message, WSUser } from '@metin2/api';
+
 
 
 export interface MessageState {
+    wsUsers: WSUser[];
     messages: Message[];
 }
 
 export const MessageInitialState: MessageState = {
+    wsUsers: [],
     messages: []
 }
 
@@ -23,6 +27,10 @@ const _MessageReducer = createReducer(MessageInitialState,
     on(AddMessage, (state, {message}) => ({
         ...state,
         messages: [...state.messages, {...message} ]
+    })),
+    on(LoadWSUsers, (state, {wsUsers}) => ({
+        ...state,
+        wsUsers: [...wsUsers]
     }))
 )
 

@@ -11,6 +11,7 @@ export class HttpService {
 
   token: string;
   baseUrl = environment.baseUrl;
+  socketEndpoint = environment.socketUrl;
 
   constructor(
     private http: HttpClient,
@@ -80,5 +81,11 @@ export class HttpService {
     const body = JSON.stringify(payload);
     return this.http.post(url, body, this.get_headers_token(this.token));
   }
+
+  get_messages() {
+    const url = `${this.socketEndpoint}/messages`;
+    return this.http.get(url, this.get_headers_token(this.token));
+  }
+
 
 }
