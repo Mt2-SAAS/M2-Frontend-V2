@@ -43,3 +43,22 @@ export const AddPlayerError = createAction(
     '[USERS] Error to load Player',
     props<{error: any}>()
 )
+
+// Own Players
+export const InitAddOwnPlayer = createAction(
+    '[USERS] Init Add AddOwnPlayer to Store',
+)
+
+export const AddOwnPlayer = createAction(
+    '[USERS] Add AddOwnPlayer to Store',
+    props<{players: Player[]}>()
+)
+
+export const DeleteOwnPlayer = createAction(
+    '[USERS] Delete AddOwnPlayer from Store',
+)
+
+export const AddOwnPlayerError = createAction(
+    '[USERS] Error to load AddOwnPlayer',
+    props<{error: any}>()
+)

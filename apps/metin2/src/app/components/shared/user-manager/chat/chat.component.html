@@ -1,41 +1,47 @@
-<h2> Chat </h2>
+<p> <strong> Chat  Online: {{ users.length }} </strong> </p>
 
-<div class="chat-window">
+
+<div class="chat-window white-bg">
 
     <div #scroll class="app-mensajes">
 
-        <div *ngFor="let message of messages" [ngClass]="{'text-right': message.from == user}" class="text-right" >
-            <p>de: <strong style="color: {{message.color}};"> {{ message.from }} </strong> hora: {{ message.date | date }} </p>
+        <div *ngFor="let message of messages" [ngClass]="{'text-right': message.userlogin == user}" class="text-right" >
+
+            <p>de: <strong style="color: {{message.payload.color}};"> {{ message.userlogin }} </strong> hora: {{ message.create_at | date }} </p>
             <p>
-                <strong> {{ message.message}} </strong>
+                <strong *ngIf="message.payload.message"> {{ message.payload.message}} </strong>
+                <img *ngIf="message.payload.gif" [src]="message.payload.gif" alt="" style="width: 50%;">
             </p>
         </div>
 
     </div>
 
-    <form [formGroup]="messageForm" (keyup.enter)="sendMessage()" class="input-chat">
+    <form [formGroup]="messageForm" (keyup.enter)="sendMessage()">
         <div class="input_sign_in">
             <input
                   formControlName="message"
                   class="input-chat"
                   type="text"
                   placeholder="Escribe un mensaje"
-                  required>
+                  required
+                  (focus)="onFocus()">
+                  <div class="pointer" style="display: inline;" (click) ="toggleEmojiPicker()"> 😀</div>
+                  <div class="pointer" style="display: inline;" (click) ="toggleGifPicker()"> Gif </div>
+
         </div>
     </form>
 
 </div>
 
-<div class="chat-users">
-    <h3> Online </h3>
-    <hr/>
-    <div className="chat-users-scroll" id="chat-users-scroll">
+<emoji-mart
+    class="emoji-mart"
+    set="{{set}}"
+    *ngIf="showEmojiPicker"
+    (emojiSelect)="addEmoji($event)"
+    title="Selecciona tu emoji.">
+</emoji-mart>
 
-        <div>
-            <span *ngFor="let user of users" style="color: {{user.color}};">
-                {{ user.name }}
-            </span>
-        </div>
-
-    </div>
-</div>
+<giphy
+    *ngIf="showGifPicker"
+    [apikey]="giphyKey"
+    (gifSelect)="addGif($event)"></giphy>

@@ -11,7 +11,7 @@
 .input-chat {
     border: 1px solid #4080FF;
     border-radius: 10px;
-    width: 100%;
+    width: 90%;
 }
 
 .chat-title {
@@ -22,7 +22,7 @@
 .chat-window {
     padding: 10px;
     width: 800;
-    height: 340px;
+    height: 440px;
     overflow: hidden;
     border: 1px solid #000000;
     border-radius: 20px;
@@ -37,7 +37,7 @@
 
 .app-mensajes {
     overflow-y: scroll;
-    height: 300px;
+    height: 400px;
     padding: 5px;
 }
 
@@ -77,14 +77,18 @@
 .chat-users{
     padding: 10px;
     width: 800;
-    height: 178px;
+    height: 50px;
     /* overflow: hidden; */
     border: 1px solid #000000;
     border-radius: 20px;
-    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .chat-users-scroll {
     overflow-y: scroll;
     height:178px;
+}
+
+.white-bg {
+    background-color: white;
 }

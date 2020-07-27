@@ -30,6 +30,11 @@ export class WebsocketService {
     }
 
     check_status() {
+
+        if(!this.socketStatus){
+            this.socket.connect();
+        }
+
         this.socket.on('connect', () => {
             this.socketStatus = true;
         });

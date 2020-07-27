@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 // importando interfaces
-import { Account } from '@metin2/api';
 import { SignupService } from '@metin2/api';
 
 // RXJS
@@ -24,16 +23,6 @@ export class SignupComponent implements OnInit {
   username: boolean;
 
   checkbox: boolean;
-
-  account: Account = {
-    login: null,
-    password: null,
-    password_again: null,
-    real_name: null,
-    email: null,
-    social_id: 1234567,
-    checkbox: false
-  };
 
   constructor(
     public service: SignupService
@@ -67,7 +56,7 @@ export class SignupComponent implements OnInit {
         Validators.required
       ])
     });
-    this.form.reset(this.account);
+    this.form.reset();
    }
 
   ngOnInit() {
@@ -79,14 +68,14 @@ export class SignupComponent implements OnInit {
     delete data.password_again;
     delete data.checkbox;
     this.service.signup(data);
-    this.form.reset(this.account);
+    this.form.reset();
   }
 
-  public verifyUser(control: FormControl): Promise<any> | Observable<any> {
+  verifyUser(control: FormControl): Promise<any> | Observable<any> {
     const usuario = control.value.toLowerCase();
     const promesa = new Promise(
-      (resolve, reject) => {
-        this.servicio(usuario);
+      (resolve) => {
+        this.checkUser(usuario);
         setTimeout( () => {
           if (this.username) {
             resolve({existe: true});
@@ -99,10 +88,9 @@ export class SignupComponent implements OnInit {
     return promesa;
   }
 
-  public servicio(usuario: string) {
+  checkUser(usuario: string) {
     this.service.check_user( usuario ).subscribe(
       (response: any) => {
-        console.log(response);
         if (response.status) {
           this.username = true;
         } else {

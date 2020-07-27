@@ -1,0 +1,30 @@
+<div class="giphy-container">
+    <form [formGroup]="form" (ngSubmit)="search()" class="giphy-form">
+        <div>
+            <input
+                formControlName="search"
+                type="text"
+                placeholder="Buscar gif"
+                required>
+
+        </div>
+        <button type="submit" class="giphy-button">
+            enviar
+        </button>
+    </form>
+
+    <div class="row">
+
+        <img *ngFor="let img of imgs"
+             [src]="img.url"
+             (click)="select(img)"
+             class="giphy-img"
+             alt="">
+
+        <div *ngIf="loader">
+            Cargando..
+        </div>
+
+    </div>
+
+</div>

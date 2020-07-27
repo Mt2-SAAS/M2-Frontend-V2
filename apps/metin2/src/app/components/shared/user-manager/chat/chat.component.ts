@@ -14,9 +14,12 @@ import { AddMessage, LoadMessages } from '@store/actions';
 import { Subscription } from 'rxjs';
 
 // Interfaces
-import { WSUser, Message } from '@metin2/api';
+import { WSUser, DataGram } from '@metin2/api';
 import { LoadWSUsers } from '@store/actions';
 import { HttpService } from '@metin2/api';
+
+// env
+import { environment } from '@env/environment';
 
 
 @Component({
@@ -29,10 +32,28 @@ export class ChatComponet implements OnInit, OnDestroy, AfterViewInit {
   user: string;
   color: string;
   users: WSUser[];
-  messages: Message[];
+  messages: DataGram[];
   messageForm: FormGroup;
   wsObserverMessage: Subscription = new Subscription();
   wsObserverUsers: Subscription = new Subscription();
+
+  // Gifs
+  showGifPicker = false;
+  gifUrl: string;
+  giphyKey: string = environment.giphyKey;
+
+  // Emojis
+  showEmojiPicker = false;
+  sets = [
+    'native',
+    'google',
+    'twitter',
+    'facebook',
+    'emojione',
+    'apple',
+    'messenger'
+  ]
+  set = 'facebook';
 
   constructor(
     private store: Store<AppState>,
@@ -77,9 +98,10 @@ export class ChatComponet implements OnInit, OnDestroy, AfterViewInit {
 
   private getMessages() {
     this.http.get_messages().subscribe(
-      ({messages}: {ok: string, messages: Message[]}) => {
+      ({messages}: {ok: string, messages: DataGram[]}) => {
         // console.log(messages);
-        this.store.dispatch(LoadMessages({messages: messages}));
+        messages.reverse();
+        this.store.dispatch(LoadMessages({messages}));
         this.scrollToBottom();
       }
     );
@@ -95,7 +117,7 @@ export class ChatComponet implements OnInit, OnDestroy, AfterViewInit {
 
   private listenMessage() {
     // Listen messages in Websocket and send to store.
-    this.wsObserverMessage = this.ws.listen('messages').subscribe( (message: Message) => {
+    this.wsObserverMessage = this.ws.listen('messages').subscribe( (message: DataGram) => {
       const payload = {...message}
       this.store.dispatch(AddMessage({message: payload}));
       // Waith dispatch
@@ -139,18 +161,59 @@ export class ChatComponet implements OnInit, OnDestroy, AfterViewInit {
 
   sendMessage() {
     const messageValue = this.messageForm.value.message;
-    if (messageValue === '' || messageValue.length < 2) return;
+    if (messageValue === null || messageValue === '' || messageValue.length < 2) return;
 
     const dateValue = new Date().toDateString();
     const color = this.color;
-    const payload: Message = {
-      from: this.user,
-      date: dateValue,
-      color: color,
-      message: messageValue
+    const payload: DataGram = {
+      userlogin: this.user,
+      create_at: dateValue,
+      payload: {
+        color: color,
+        message: messageValue,
+        gif: this.gifUrl,
+      }
     }
     this.ws.emit('messages', payload);
     this.messageForm.reset();
+    this.gifUrl = null;
+  }
+
+  addEmoji(event) {
+    let message: string;
+    const input: HTMLInputElement = document.querySelector('.input-chat');
+
+    if (this.messageForm.value.message === null) {
+      message = `${event.emoji.native}`;
+    } else {
+      message = `${this.messageForm.value.message}${event.emoji.native}`;
+    }
+    this.messageForm.patchValue({
+      message
+    });
+    this.showEmojiPicker = false;
+    input.focus();
+  }
+
+  addGif(event) {
+    const input: HTMLInputElement = document.querySelector('.input-chat');
+
+    this.gifUrl = `${event.url}`;
+
+    this.showGifPicker = false;
+    input.focus();
+  }
+
+  toggleEmojiPicker() {
+    this.showEmojiPicker = !this.showEmojiPicker;
+  }
+
+  toggleGifPicker() {
+    this.showGifPicker = !this.showGifPicker;
+  }
+
+  onFocus() {
+    this.showEmojiPicker = false;
   }
 
 }

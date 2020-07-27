@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   baseUrl: 'http://localhost:8000',
   serverName: 'Metin2 Lamda',
-  socketUrl: 'http://localhost:5000'
+  socketUrl: 'http://localhost:5000',
+  giphyKey: 'Nati5lUUFMbbsPbpP56tMjh1gTQ9KLz5'
 };
 
 /*

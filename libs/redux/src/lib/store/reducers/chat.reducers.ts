@@ -5,13 +5,13 @@ import {
     LoadWSUsers
 } from '../actions';
 //Interfaces
-import { Message, WSUser } from '@metin2/api';
+import { DataGram, WSUser } from '@metin2/api';
 
 
 
 export interface MessageState {
     wsUsers: WSUser[];
-    messages: Message[];
+    messages: DataGram[];
 }
 
 export const MessageInitialState: MessageState = {

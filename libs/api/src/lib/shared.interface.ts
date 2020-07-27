@@ -36,10 +36,15 @@ export interface DjangoResponse {
     results: any[];
 }
 
-export interface Message {
-    from: string,
-    date: string,
+export interface DataGram {
+    userlogin: string,
+    create_at: string,
+    payload: MessagePayload
+}
+
+export interface MessagePayload {
     color?: string,
+    gif?: string,
     message?: any,
 }
 

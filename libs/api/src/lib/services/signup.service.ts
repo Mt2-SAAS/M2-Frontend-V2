@@ -24,7 +24,7 @@ export class SignupService {
     }, 5000);
   }
 
-  public signup(user: AccountSend) {
+  signup(user: AccountSend) {
     return this.http.create_user(user).subscribe(
       response => {
         this.tmpUser = response;
@@ -36,7 +36,7 @@ export class SignupService {
 
   }
 
-  public check_user(username: string) {
+  check_user(username: string) {
     return this.http.verify_user(username);
   }
 

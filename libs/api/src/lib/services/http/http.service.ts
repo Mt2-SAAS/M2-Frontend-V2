@@ -19,7 +19,7 @@ export class HttpService {
   ) {
     this.store.select('user').subscribe(({token}) => {
       this.token = token;
-    })
+    });
   }
 
   private get_headers() {
@@ -80,6 +80,11 @@ export class HttpService {
     const url = `${this.baseUrl}/api/change_pass/`;
     const body = JSON.stringify(payload);
     return this.http.post(url, body, this.get_headers_token(this.token));
+  }
+
+  get_own_player() {
+    const url = `${this.baseUrl}/api/current_players/`;
+    return this.get(url);
   }
 
   get_messages() {

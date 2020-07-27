@@ -32,8 +32,8 @@ export class AuthGuardService implements CanActivate, CanLoad {
             const interval = setInterval(() => {
                 if(!this.auth.isAuthenticated()){
                     clearInterval(interval);
-                    this.store.dispatch(HiddenProfileModal({hidden: true}));
                     this.auth.logout();
+                    this.store.dispatch(HiddenProfileModal({hidden: true}));
                     this.router.navigate(['/']);
                 }
             }, 1000);
