@@ -11,6 +11,7 @@ import { User } from '@metin2/api';
 import { Store } from '@ngrx/store';
 import { AppState } from '@store';
 import { DeleteToken, DeleteUser } from '@store/actions';
+import { WebsocketService } from '../websocket.service';
 
 const helper = new JwtHelperService();
 
@@ -22,7 +23,9 @@ export class AuthService {
 
     constructor(
         private http: HttpService,
-        private store: Store<AppState>
+        private store: Store<AppState>,
+        private ws: WebsocketService
+
     ) {}
 
     login(UserData: User) {
@@ -40,6 +43,7 @@ export class AuthService {
         localStorage.removeItem('token');
         this.store.dispatch(DeleteToken());
         this.store.dispatch(DeleteUser());
+        this.ws.websocketLogout();
     }
 
     isAuthenticated() {

@@ -11,6 +11,7 @@ export class HttpService {
 
   token: string;
   baseUrl = environment.baseUrl;
+  socketEndpoint = environment.socketUrl;
 
   constructor(
     private http: HttpClient,
@@ -18,7 +19,7 @@ export class HttpService {
   ) {
     this.store.select('user').subscribe(({token}) => {
       this.token = token;
-    })
+    });
   }
 
   private get_headers() {
@@ -80,5 +81,16 @@ export class HttpService {
     const body = JSON.stringify(payload);
     return this.http.post(url, body, this.get_headers_token(this.token));
   }
+
+  get_own_player() {
+    const url = `${this.baseUrl}/api/current_players/`;
+    return this.get(url);
+  }
+
+  get_messages() {
+    const url = `${this.socketEndpoint}/messages`;
+    return this.http.get(url, this.get_headers_token(this.token));
+  }
+
 
 }

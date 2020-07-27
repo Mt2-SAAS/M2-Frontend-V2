@@ -25,6 +25,12 @@ import { ListPlayersComponent } from './wigets/players/list-player.component';
 import { StaticsComponent } from './wigets/statics/statics.component';
 import { SidebarComponent } from './wigets/sidebar/sidebar.component';
 
+// Emojis module
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
+
+// Giphy Module
+import { GiphyModule } from './giphy/giphy.module';
+
 
 @NgModule({
     declarations: [
@@ -48,7 +54,9 @@ import { SidebarComponent } from './wigets/sidebar/sidebar.component';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule
+        RouterModule,
+        PickerModule,
+        GiphyModule
     ],
     exports: [
         NavbarComponent,

@@ -32,6 +32,7 @@
               "node_modules/@fortawesome/fontawesome-free/scss/solid.scss",
               "node_modules/@fortawesome/fontawesome-free/scss/regular.scss",
               "node_modules/@fortawesome/fontawesome-free/scss/brands.scss",
+              "node_modules/@ctrl/ngx-emoji-mart/picker.css",
               "apps/metin2/src/normalize.scss",
               "apps/metin2/src/styles.scss"
 

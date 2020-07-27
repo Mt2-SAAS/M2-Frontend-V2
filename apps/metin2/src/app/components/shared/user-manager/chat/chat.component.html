@@ -1,27 +1,47 @@
-<h2> Chat </h2>
+<p> <strong> Chat  Online: {{ users.length }} </strong> </p>
 
-<div class="chat-window">
 
-    <div class="app-mensajes">
+<div class="chat-window white-bg">
 
-        <div *ngFor="let message of messages" [ngClass]="{'text-right': message.from == user}" class="text-right" >
-            <span>de: {{ message.from }} hora: {{ message.date }} </span>
+    <div #scroll class="app-mensajes">
+
+        <div *ngFor="let message of messages" [ngClass]="{'text-right': message.userlogin == user}" class="text-right" >
+
+            <p>de: <strong style="color: {{message.payload.color}};"> {{ message.userlogin }} </strong> hora: {{ message.create_at | date }} </p>
             <p>
-                {{ message.message}}
+                <strong *ngIf="message.payload.message"> {{ message.payload.message}} </strong>
+                <img *ngIf="message.payload.gif" [src]="message.payload.gif" alt="" style="width: 50%;">
             </p>
         </div>
 
     </div>
 
-    <form [formGroup]="messageForm" (keyup.enter)="sendMessages()" class="input-chat">
+    <form [formGroup]="messageForm" (keyup.enter)="sendMessage()">
         <div class="input_sign_in">
             <input
                   formControlName="message"
                   class="input-chat"
                   type="text"
-                  placeholder="Tu mensaje"
-                  required>
+                  placeholder="Escribe un mensaje"
+                  required
+                  (focus)="onFocus()">
+                  <div class="pointer" style="display: inline;" (click) ="toggleEmojiPicker()"> 😀</div>
+                  <div class="pointer" style="display: inline;" (click) ="toggleGifPicker()"> Gif </div>
+
         </div>
     </form>
 
 </div>
+
+<emoji-mart
+    class="emoji-mart"
+    set="{{set}}"
+    *ngIf="showEmojiPicker"
+    (emojiSelect)="addEmoji($event)"
+    title="Selecciona tu emoji.">
+</emoji-mart>
+
+<giphy
+    *ngIf="showGifPicker"
+    [apikey]="giphyKey"
+    (gifSelect)="addGif($event)"></giphy>

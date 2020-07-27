@@ -7,17 +7,23 @@ import {
     AddUserError,
     AddPlayer,
     DeletePlayer,
-    AddPlayerError
+    AddPlayerError,
+    AddOwnPlayer,
+    DeleteOwnPlayer,
+    AddOwnPlayerError
 } from '../actions';
 
 import { UserLogin, Player } from '@metin2/api';
+import { InitAddOwnPlayer } from '../actions/users.actions';
 
 
 export interface UsersState {
     token: string;
     user: UserLogin;
+    ownPlayers: Player[]
     players: Player[]
     error: any
+    loading: boolean
 }
 
 const initialUser: UserLogin = {
@@ -32,8 +38,10 @@ const initialUser: UserLogin = {
 export const UsersInitialState: UsersState = {
     token: null,
     user: initialUser,
+    ownPlayers: [],
     players: [],
-    error: null
+    error: null,
+    loading: false
 }
 
 const _UsersReducer = createReducer(UsersInitialState,
@@ -68,6 +76,26 @@ const _UsersReducer = createReducer(UsersInitialState,
     on(AddPlayerError, (state, {error}) => ({
         ...state,
         error: error
+    })),
+    on(InitAddOwnPlayer, (state) => ({
+        ...state,
+        loading: true
+    })),
+    on(AddOwnPlayer, (state, {players}) => ({
+        ...state,
+        players: players,
+        loading: false
+
+    })),
+    on(DeleteOwnPlayer, (state) => ({
+        ...state,
+        players: null,
+        loading: false
+    })),
+    on(AddOwnPlayerError, (state, {error}) => ({
+        ...state,
+        error: error,
+        loading: false
     }))
 )
 

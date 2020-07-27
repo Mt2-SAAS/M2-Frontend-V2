@@ -11,7 +11,7 @@ import { of } from 'rxjs';
 import * as usersActions from '../actions';
 
 // Services
-import { AuthenticateService } from '@metin2/api';
+import { AuthenticateService, Player } from '@metin2/api';
 
 // Interface
 import { UserLogin } from '@metin2/api';
@@ -38,17 +38,17 @@ export class UsersEffects {
         )
     )
 
-    // AddCurrentPlayers = createEffect(
-    //     () => this.actions$.pipe(
-    //         ofType( usersActions.TogleManagerPlayer ),
-    //         mergeMap(
-    //             () => this.authenticate.get_current_players()
-    //                 .pipe(
-    //                     map((players: Player[]) => usersActions.AddPlayer({players: players}) ),
-    //                     catchError( err => of(usersActions.AddPlayerError({error: err})) )
-    //                 )
-    //         )
-    //     )
-    // )
+    AddCurrentPlayers = createEffect(
+        () => this.actions$.pipe(
+            ofType( usersActions.InitAddOwnPlayer ),
+            mergeMap(
+                () => this.authenticate.get_current_players()
+                    .pipe(
+                        map((players: Player[]) => usersActions.AddOwnPlayer({players: players}) ),
+                        catchError( err => of(usersActions.AddOwnPlayerError({error: err})) )
+                    )
+            )
+        )
+    )
 
 }
