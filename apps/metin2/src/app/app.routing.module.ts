@@ -36,12 +36,17 @@ const RootRoutes: Routes = [
 ];
 
 const RoutesConfig: ExtraOptions = {
-    useHash: true
+    // useHash: true,
+    // anchorScrolling: 'enabled',
+    scrollOffset: [0, 64],
+    useHash: false,
+    anchorScrolling: 'enabled',
+    scrollPositionRestoration: 'enabled',
+    onSameUrlNavigation: 'reload'
 };
 
 @NgModule({
     imports: [
-
         RouterModule.forRoot(RootRoutes, RoutesConfig)
     ],
     exports: [

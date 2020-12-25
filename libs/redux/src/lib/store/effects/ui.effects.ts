@@ -12,7 +12,7 @@ import * as rankingsActions from '../actions';
 import { HttpService } from '@metin2/api';
 
 // Interface
-import { DjangoResponse } from '@metin2/api';
+import { DjangoResponse, ServerStats } from '@metin2/api';
 
 @Injectable()
 export class UIEffects {
@@ -25,7 +25,7 @@ export class UIEffects {
 
     LoadGuilds$ = createEffect(
         () => this.actions$.pipe(
-            ofType( rankingsActions.ShowRankingGuildModal ),
+            ofType( rankingsActions.InitLoadGuilds ),
             mergeMap(
                 () => this.service.get_guilds()
                     .pipe(
@@ -38,11 +38,24 @@ export class UIEffects {
 
     LoadPlayers$ = createEffect(
         () => this.actions$.pipe(
-            ofType( rankingsActions.ShowRankingPlayerModal ),
+            ofType( rankingsActions.InitLoadPlayers ),
             mergeMap(
                 () => this.service.get_players()
                     .pipe(
                         map(( {results} : DjangoResponse ) => rankingsActions.LoadPlayers({players: results}) ),
+                        catchError( err => of(rankingsActions.LoadError({error: err})) )
+                    )
+            )
+        )
+    )
+
+    LoadStats$ = createEffect(
+        () => this.actions$.pipe(
+            ofType( rankingsActions.InitGetServerStatics ),
+            mergeMap(
+                () => this.service.get_server_stats()
+                    .pipe(
+                        map( (results: ServerStats)  => rankingsActions.GetServerStatics({statics: results}) ),
                         catchError( err => of(rankingsActions.LoadError({error: err})) )
                     )
             )

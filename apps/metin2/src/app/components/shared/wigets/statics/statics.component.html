@@ -1,11 +1,20 @@
-<div class="info_players">
-    240 Jugadores Ult. 24 Horas
-</div>
+<div>
+    <div *ngIf="!loading">
+        <div class="info_players">
+            {{ stats.lastonline }} Jugadores Ult 24 Horas
+        </div>
 
-<div class="info_registers">
-    1200 Registrados
-</div>
+        <div class="info_registers">
+            {{ stats.accounts }} Registrados
+        </div>
 
-<div class="info_characters">
-    3400 Personajes
+        <div class="info_characters">
+            {{ stats.players }} Personajes
+        </div>
+    </div>
+
+    <div class="info_players" *ngIf="loading">
+        Cargando Estadisticas
+    </div>
+
 </div>

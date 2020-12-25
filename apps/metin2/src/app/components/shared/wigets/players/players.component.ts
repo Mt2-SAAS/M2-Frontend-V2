@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 // Store
-import { Store } from '@ngrx/store'
-import { AppState } from '@store'
-import { ShowRankingPlayerModal } from '@store/actions';
+import { Store } from '@ngrx/store';
+import { AppState } from '@store';
+import { ShowRankingPlayerModal, InitLoadPlayers } from '@store/actions';
 
 @Component({
   selector: 'app-players',
@@ -12,6 +12,7 @@ import { ShowRankingPlayerModal } from '@store/actions';
 })
 export class PlayersComponent implements OnInit {
 
+  loading: boolean;
   modal: boolean;
 
   constructor(
@@ -21,10 +22,15 @@ export class PlayersComponent implements OnInit {
   ngOnInit() {
     this.store.select('ui').subscribe(({modal_ranking_player}) => {
       this.modal = modal_ranking_player;
-    })
+    });
+
+    this.store.select('ranking').subscribe(({loading}) => {
+      this.loading = loading;
+    });
   }
 
   show_modal() {
-    this.store.dispatch(ShowRankingPlayerModal({show: true}))
+    this.store.dispatch(ShowRankingPlayerModal({show: true}));
+    this.store.dispatch(InitLoadPlayers());
   }
 }

@@ -1,0 +1,28 @@
+<h3> Promo Codes </h3>
+<hr>
+
+<p>
+    Codigos canjeables por MDs.
+</p>
+
+<form [formGroup]="form" (ngSubmit)="send()" class="">
+    <div class="">
+        <label for="code">Code</label>
+        <input
+              formControlName="code"
+              type="text"
+              placeholder=""
+              required>
+    </div>
+
+    <div class="input_sign_in_div" *ngIf="form.controls['code'].errors?.required && form.controls['code'].touched"> * El Codigo es obligatorio.</div>
+    <div class="input_sign_in_div" *ngIf="form.controls['code'].errors?.pattern" for="login">* Intruduce un formato valido.</div>
+
+    <div class="input_sign_in_div"> {{ status }} </div>
+    <button   class="madera"
+              type="submit"
+              [disabled]="!form.valid"
+              >
+        Canjear
+    </button>
+</form>

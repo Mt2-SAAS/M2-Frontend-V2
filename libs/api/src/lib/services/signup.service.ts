@@ -25,15 +25,7 @@ export class SignupService {
   }
 
   signup(user: AccountSend) {
-    return this.http.create_user(user).subscribe(
-      response => {
-        this.tmpUser = response;
-      },
-      err => {
-        this.errorMessage = err.error['non_field_errors'][0];
-        this.showErrors();
-      });
-
+    return this.http.create_user(user);
   }
 
   check_user(username: string) {

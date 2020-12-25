@@ -1,11 +1,12 @@
 <aside class="rankings">
     <p class="tittle">
-        Ranking de Guerreros
+        Ranking de Personajes
     </p>
     <div  (click)="close_modal()"
           class="btn_close pointer">
         <i class="far fa-times-circle"></i>
     </div>
+    <div *ngIf="loading" class="loader"></div>
     <div *ngFor="let player of players; let i = index" class="{{ positions_class[i] }} text_position">
         <div class="position">
             {{ i + 1 }}

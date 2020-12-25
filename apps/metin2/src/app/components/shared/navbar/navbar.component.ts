@@ -1,4 +1,4 @@
-import { Component  } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { Router } from '@angular/router';
 
 // Services
@@ -15,13 +15,22 @@ import { ShowLoginModal, ShowProfileModal } from '@store/actions';
   templateUrl: './navbar.component.html',
   styles: []
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
+
+  online: string;
 
   constructor(
     public login: AuthService,
     private store: Store<AppState>,
     private router: Router
   ) { }
+
+  ngOnInit(){
+    this.online = 'Offline';
+    setTimeout(() => {
+      this.online = 'Online'
+    }, 3000)
+  }
 
   show_login_modal() {
     this.store.dispatch(ShowLoginModal({show: true}))

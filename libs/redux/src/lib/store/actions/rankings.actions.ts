@@ -4,14 +4,21 @@ import { createAction, props } from '@ngrx/store';
 import { Guild, Player } from '@metin2/api';
 
 // Guild Actions
+export const InitLoadGuilds = createAction(
+    '[GUILDS] Init Load Guilds'
+);
+
+export const InitLoadPlayers = createAction(
+    '[GUILDS] Init Load Players',
+);
 
 export const LoadGuilds = createAction(
-    '[GUILDS] Load Guild',
+    '[GUILDS] Load Guilds',
     props<{guilds: Guild[]}>()
 );
 
 export const LoadPlayers = createAction(
-    '[GUILDS] Load Player',
+    '[GUILDS] Load Players',
     props<{players: Player[]}>()
 );
 

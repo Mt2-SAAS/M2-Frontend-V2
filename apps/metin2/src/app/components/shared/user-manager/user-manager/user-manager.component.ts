@@ -40,11 +40,11 @@ export class UserManagerComponent implements OnInit {
   logout() {
     this.login.logout();
     this.store.dispatch(HiddenProfileModal({hidden: true}));
-    this.router.navigate(['/'])
+    this.router.navigate(['/'], { fragment: 'intro' })
   }
 
   close_modal() {
     this.store.dispatch(HiddenProfileModal({hidden: true}));
-    this.router.navigate(['/'])
+    this.router.navigate(['/'], { fragment: 'intro' })
   }
 }

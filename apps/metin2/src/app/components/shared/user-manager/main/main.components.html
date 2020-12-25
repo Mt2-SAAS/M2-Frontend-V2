@@ -1,8 +1,31 @@
-<h2> Información </h2>
+<h2> Informacion </h2>
 <hr>
 
-<p>Usuario: <strong> {{ user['login'] }} </strong> </p>
-<p>Email: <strong> {{ user['email'] }} </strong> </p>
-<p>Nombre Real: <strong> {{ user['real_name'] }} </strong> </p>
-<p>MDS: <strong> {{ user['coins'] }} </strong> </p>
-<p>Fecha de Registro: <strong> {{  user['create_time'] | date }} </strong> </p>
+<div *ngIf="loading; else block" class="loader"></div>
+
+<ng-template #block>
+
+    <table>
+      <tr>
+        <th>Usuario</th>
+        <th>Email</th>
+        <th>Nombre Real</th>
+        <th>MDS</th>
+        <th>Fecha Registro</th>
+      </tr>
+      <tr>
+        <td> {{ user['login']  }} </td>
+        <td> {{ user['email'] }} </td>
+        <td> {{ user['real_name']  }} </td>
+        <td> {{ user['coins'] }} </td>
+        <td> {{ user['create_time'] | date }} </td>
+      </tr>
+    </table>
+
+    <br />
+    <br />
+    <br />
+
+    <promo></promo>
+
+</ng-template>
