@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 // Services
-import { WebsocketService } from '@metin2/api';
+import { WebsocketService, AuthenticateService } from '@metin2/api';
 import { AuthService } from '@metin2/api';
 
 // Store
@@ -16,7 +16,6 @@ import { Subscription } from 'rxjs';
 // Interfaces
 import { WSUser, DataGram } from '@metin2/api';
 import { LoadWSUsers } from '@store/actions';
-import { HttpService } from '@metin2/api';
 
 // env
 import { environment } from '@env/environment';
@@ -59,7 +58,7 @@ export class ChatComponet implements OnInit, OnDestroy, AfterViewInit {
     private store: Store<AppState>,
     private auth: AuthService,
     private ws: WebsocketService,
-    private http: HttpService
+    private http: AuthenticateService
   ) {
     this.messageForm = new FormGroup({
       message : new FormControl('', [
@@ -159,17 +158,13 @@ export class ChatComponet implements OnInit, OnDestroy, AfterViewInit {
     })
   }
 
-  sendMessage() {
-    const messageValue = this.messageForm.value.message;
-    if (messageValue === null || messageValue === '' || messageValue.length < 2) return;
-
+  private sendDatagram(messageValue: string = '') {
     const dateValue = new Date().toDateString();
-    const color = this.color;
     const payload: DataGram = {
       userlogin: this.user,
       create_at: dateValue,
       payload: {
-        color: color,
+        color: this.color,
         message: messageValue,
         gif: this.gifUrl,
       }
@@ -178,6 +173,14 @@ export class ChatComponet implements OnInit, OnDestroy, AfterViewInit {
     this.messageForm.reset();
     this.gifUrl = null;
   }
+
+  sendMessage() {
+    const messageValue = this.messageForm.value.message;
+    if (messageValue === null || messageValue === '' || messageValue.length < 2) return;
+
+    this.sendDatagram(messageValue);
+  }
+
 
   addEmoji(event) {
     let message: string;
@@ -196,12 +199,12 @@ export class ChatComponet implements OnInit, OnDestroy, AfterViewInit {
   }
 
   addGif(event) {
-    const input: HTMLInputElement = document.querySelector('.input-chat');
+    // const input: HTMLInputElement = document.querySelector('.input-chat');
 
     this.gifUrl = `${event.url}`;
-
+    this.sendDatagram();
     this.showGifPicker = false;
-    input.focus();
+    // input.focus();
   }
 
   toggleEmojiPicker() {

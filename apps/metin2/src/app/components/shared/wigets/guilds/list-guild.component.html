@@ -6,6 +6,7 @@
           class="btn_close pointer">
         <i class="far fa-times-circle"></i>
     </div>
+    <div *ngIf="loading" class="loader"></div>
     <div *ngFor="let guild of guilds; let i = index" class="{{positions_class[i]}} text_position">
         <div class="position">
             {{ i + 1 }}

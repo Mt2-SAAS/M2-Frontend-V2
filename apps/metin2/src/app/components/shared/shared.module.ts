@@ -24,6 +24,8 @@ import { ListPlayersComponent } from './wigets/players/list-player.component';
 // Statics
 import { StaticsComponent } from './wigets/statics/statics.component';
 import { SidebarComponent } from './wigets/sidebar/sidebar.component';
+// Promox
+import { PromoComponent } from './wigets/promo/promo.component';
 
 // Emojis module
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
@@ -48,6 +50,7 @@ import { GiphyModule } from './giphy/giphy.module';
         LoginFormComponent,
         ListGuildComponent,
         ListPlayersComponent,
+        PromoComponent,
         ChatComponet
     ],
     imports: [

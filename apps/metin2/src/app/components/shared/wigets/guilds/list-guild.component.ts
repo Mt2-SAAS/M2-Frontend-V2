@@ -15,6 +15,7 @@ import { HiddenRankingGuildModal } from '@store/actions';
 })
 export class ListGuildComponent implements OnInit {
 
+    loading: boolean;
     guilds: Guild[] = [];
     positions_class = ['fisrt_position', 'second_position', 'threeth_position', 'fourth_position', 'fith_position']
 
@@ -23,13 +24,14 @@ export class ListGuildComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.store.select('ranking').subscribe(({guilds}) => {
+        this.store.select('ranking').subscribe(({guilds, loading}) => {
             this.guilds = guilds.slice(0,5)
-        })
+            this.loading = loading;
+        });
     }
 
     close_modal() {
-        this.store.dispatch(HiddenRankingGuildModal({hidden: true}))
+        this.store.dispatch(HiddenRankingGuildModal({hidden: true}));
     }
 
 }

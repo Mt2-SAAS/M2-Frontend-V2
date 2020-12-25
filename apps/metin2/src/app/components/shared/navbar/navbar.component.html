@@ -6,7 +6,7 @@
                 Online
             </div>-->
             <div class="state">
-                Offline
+                {{ online }}
             </div>
         </div>
         <div class="agent_action">
@@ -15,7 +15,7 @@
                 [ngClass]="{'invisible': login.isAuthenticated()}"
                 id="btn_sign_in"
                 class="sign_in">
-                Iniciar Sesión
+                Iniciar Sesion
             </a>
             <!-- Boton de Perfil para el menú de acciones del usuario solo mostrar si inició sesión-->
             <a  (click)="show_profile_modal()"

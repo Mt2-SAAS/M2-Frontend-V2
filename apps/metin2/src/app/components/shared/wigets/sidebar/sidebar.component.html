@@ -1,7 +1,9 @@
-<a href="#intro" class="nav_uncle" style="top: 25%;"></a>
-<a href="#info" class="nav_uncle" style="top: 32%;"></a>
-<a href="#info2" class="nav_uncle" style="top: 39%;"></a>
-<a href="#requirements" class="nav_uncle" style="top: 46%;"></a>
-<a href="#register" class="nav_uncle" style="top: 53%;"></a>
-<a href="#downloads" class="nav_uncle" style="top: 60%;"></a>
-<a href="#donations" class="nav_uncle" style="top: 67%;"></a>
+<nav>
+    <a href="#intro" [ngClass]="{'opacy': fragment === 'intro'}" class="nav_uncle first"></a>
+    <a href="#info" [ngClass]="{'opacy': fragment === 'info'}" class="nav_uncle second"></a>
+    <a href="#info2" [ngClass]="{'opacy': fragment === 'info2'}" class="nav_uncle third"></a>
+    <a href="#requirements" [ngClass]="{'opacy': fragment === 'requirements'}" class="nav_uncle fourth"></a>
+    <a href="#register" [ngClass]="{'opacy': fragment === 'register'}" class="nav_uncle fifth"></a>
+    <a href="#downloads" [ngClass]="{'opacy': fragment === 'downloads'}" class="nav_uncle sixth"></a>
+    <a href="#donations" [ngClass]="{'opacy': fragment === 'donations'}" class="nav_uncle seventh"></a>
+</nav>

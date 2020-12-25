@@ -11,10 +11,11 @@ import { Player } from '@metin2/api';
 @Component({
   selector: 'manager-player-list',
   templateUrl: 'players.component.html',
-  styles: []
+  styleUrls: []
 })
 export class PlayersListComponent implements OnInit {
 
+  loading: boolean;
   players: Player[] = []
 
   constructor(
@@ -23,8 +24,9 @@ export class PlayersListComponent implements OnInit {
 
   ngOnInit() {
 
-    this.store.select('user').subscribe(({ownPlayers}) => {
-      this.players = ownPlayers;
+    this.store.select('user').subscribe(({players, loading}) => {
+      this.players = players;
+      this.loading = loading;
     });
 
     this.get_own_players();

@@ -1,10 +1,9 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
-// import { HttpService } from '../../../../services/http/http.service';
+import { Component, OnInit } from '@angular/core';
 
 // Redux
 import { Store } from '@ngrx/store'
 import { AppState } from '@store'
-import { ShowRankingGuildModal } from '@store/actions';
+import { ShowRankingGuildModal, InitLoadGuilds } from '@store/actions';
 
 @Component({
   selector: 'app-guilds',
@@ -22,10 +21,11 @@ export class GuildsComponent implements OnInit {
   ngOnInit() {
     this.store.select('ui').subscribe(({modal_ranking_guild}) => {
       this.modal = modal_ranking_guild;
-    })
+    });
   }
 
   show_modal() {
-    this.store.dispatch(ShowRankingGuildModal({show: true}))
+    this.store.dispatch(ShowRankingGuildModal({show: true}));
+    this.store.dispatch(InitLoadGuilds());
   }
 }

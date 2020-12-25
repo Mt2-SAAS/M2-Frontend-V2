@@ -15,6 +15,7 @@ import { UserLogin } from '@metin2/api';
 })
 export class MainManagerComponent implements OnInit {
 
+  loading: boolean;
   user: UserLogin;
 
   constructor(
@@ -22,9 +23,10 @@ export class MainManagerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.store.select('user').subscribe(({user}) => {
+    this.store.select('user').subscribe(({user, loading}) => {
       this.user = user;
-    })
+      this.loading = loading;
+    });
   }
 
 }

@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 //Redux
 import { Store } from '@ngrx/store';
 import { AppState } from '@store';
-// import { HiddenLoginModal } from '../../../store/actions';
 
 
 @Component({
@@ -22,7 +21,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.store.select('ui').subscribe(({modal_login}) => {
       this.modal = modal_login;
-    })
+    });
   }
 
 }

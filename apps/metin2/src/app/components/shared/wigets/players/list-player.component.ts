@@ -6,7 +6,7 @@ import { Player } from '@metin2/api';
 // Redux
 import { Store } from '@ngrx/store';
 import { AppState } from '@store';
-import { HiddenRankingPlayerModal } from '@store/actions';
+import { HiddenRankingPlayerModal, InitLoadPlayers } from '@store/actions';
 
 @Component({
   selector: 'ListPlayer',
@@ -15,6 +15,7 @@ import { HiddenRankingPlayerModal } from '@store/actions';
 })
 export class ListPlayersComponent implements OnInit {
 
+  loading: boolean;
   players: Player[] = []
   positions_class = ['fisrt_position', 'second_position', 'threeth_position', 'fourth_position', 'fith_position']
 
@@ -23,13 +24,14 @@ export class ListPlayersComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.store.select('ranking').subscribe(({players}) => {
+    this.store.select('ranking').subscribe(({players, loading}) => {
       this.players = players.slice(0, 5);
-    })
+      this.loading = loading;
+    });
   }
 
   close_modal() {
-    this.store.dispatch(HiddenRankingPlayerModal({hidden: true}))
+    this.store.dispatch(HiddenRankingPlayerModal({hidden: true}));
   }
 
 }

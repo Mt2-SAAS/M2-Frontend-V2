@@ -75,3 +75,18 @@ export interface UserLogin {
     coins: number;
     create_time: string;
 }
+
+export interface ServerStats {
+    online: number;
+    lastonline: number;
+    accounts: number;
+    players: number;
+}
+
+export interface Download {
+    provider: string;
+    weight: number;
+    link: string;
+    create_at: string;
+    modified_at: string;
+}

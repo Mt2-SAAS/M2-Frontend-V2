@@ -40,7 +40,7 @@ export class WebsocketService {
         });
 
         this.socket.on('disconnect', () => {
-            this.socketStatus = true;
+            this.socketStatus = false;
         });
     }
 
@@ -67,7 +67,6 @@ export class WebsocketService {
         if(localStorage.getItem('color')) {
             localStorage.removeItem('color');
         }
-        this.socketStatus = false;
         this.socket.disconnect();
     }
 

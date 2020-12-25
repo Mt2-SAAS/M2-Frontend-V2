@@ -5,10 +5,23 @@
       Descarga el Cliente
     </h3>
     <p>
-      Descarga nuestro software cliente y empieza tu aventura.
+      Descarga  el juego y se parte de la más grande aventura
     </p>
-    <a class="btn_download pointer">
-      Descargar
-    </a>
+
+    <table>
+      <tr>
+        <th>Provedor</th>
+        <th>Peso</th>
+        <th>Publicado</th>
+        <th>Link</th>
+      </tr>
+      <tr *ngFor="let download of downloads">
+        <td> {{ download['provider']  }} </td>
+        <td> {{ download['weight'] }} GB </td>
+        <td> {{ download['create_at'] | date }} </td>
+        <td> <a href="{{ download['link'] }}" target="_blank" > Link </a> </td>
+      </tr>
+    </table>
+
   </div>
 </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 // Services
-import { HttpService } from '@metin2/api';
+import { AuthenticateService } from '@metin2/api';
 // Store
 
 @Component({
@@ -15,7 +15,7 @@ export class PasswdComponent implements OnInit {
   message: any;
 
   constructor(
-    private http: HttpService
+    private http: AuthenticateService
   ) {
     this.form = new FormGroup({
       current_password: new FormControl('', [

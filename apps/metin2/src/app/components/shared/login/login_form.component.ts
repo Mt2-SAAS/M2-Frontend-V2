@@ -52,13 +52,13 @@ export class LoginFormComponent {
               // Add token to store
               localStorage.setItem('token', token);
               // Add to redux state
-              this.store.dispatch(AddToken({token: token}))
+              this.store.dispatch(AddToken({token: token}));
               // Clean Form
               this.form.reset(this.user);
               // Close Modal
               this.store.dispatch(HiddenLoginModal({hidden: true}));
               this.store.dispatch(ShowProfileModal({show: true}));
-              this.router.navigate(['/modal', {outlets: {'modal': ['main']}}])
+              this.router.navigate(['/modal', {outlets: {'modal': ['main']}}]);
           },
           () => { // Handle error
               this.message = 'Nombre de usuario o contraseña incorrecta';
@@ -70,6 +70,6 @@ export class LoginFormComponent {
     }
 
     close_modal() {
-      this.store.dispatch(HiddenLoginModal(HiddenLoginModal({hidden: true})))
+      this.store.dispatch(HiddenLoginModal({hidden: true}))
     }
 }

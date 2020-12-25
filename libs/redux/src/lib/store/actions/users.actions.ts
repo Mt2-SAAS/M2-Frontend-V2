@@ -5,6 +5,7 @@ import { UserLogin, Player } from '@metin2/api';
 
 // Users Actions
 
+// Token
 export const AddToken = createAction(
     '[USERS] Add Token to Store',
     props<{token: string}>()
@@ -14,6 +15,7 @@ export const DeleteToken = createAction(
     '[USERS] Delete Token from Store'
 )
 
+// Simple User
 export const AddUser = createAction(
     '[USERS] Add user to Store',
     props<{user: UserLogin}>()

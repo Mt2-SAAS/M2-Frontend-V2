@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-
+import { ServerStats } from '@metin2/api';
 // UI Actions
 
 // Login Modal
@@ -44,4 +44,14 @@ export const ShowProfileModal = createAction(
 export const HiddenProfileModal = createAction(
     '[UI] Hidden Profile Modal',
     props<{hidden: boolean}>()
+)
+
+// Statics
+export const InitGetServerStatics = createAction(
+    '[UI] Init Get Server Statics'
+)
+
+export const GetServerStatics = createAction(
+    '[UI] Get Server Statics',
+    props<{ statics: ServerStats }>()
 )

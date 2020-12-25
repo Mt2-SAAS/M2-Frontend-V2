@@ -20,7 +20,6 @@ import { InitAddOwnPlayer } from '../actions/users.actions';
 export interface UsersState {
     token: string;
     user: UserLogin;
-    ownPlayers: Player[]
     players: Player[]
     error: any
     loading: boolean
@@ -38,7 +37,6 @@ const initialUser: UserLogin = {
 export const UsersInitialState: UsersState = {
     token: null,
     user: initialUser,
-    ownPlayers: [],
     players: [],
     error: null,
     loading: false
@@ -47,7 +45,8 @@ export const UsersInitialState: UsersState = {
 const _UsersReducer = createReducer(UsersInitialState,
     on(AddToken, (state, {token}) => ({
         ...state,
-        token: token
+        token: token,
+        loading: true
     })),
     on(DeleteToken, (state) => ({
         ...state,
@@ -55,7 +54,8 @@ const _UsersReducer = createReducer(UsersInitialState,
     })),
     on(AddUser, (state, {user}) => ({
         ...state,
-        user: user
+        user: user,
+        loading: false
     })),
     on(DeleteUser, (state) => ({
         ...state,
@@ -79,6 +79,7 @@ const _UsersReducer = createReducer(UsersInitialState,
     })),
     on(InitAddOwnPlayer, (state) => ({
         ...state,
+        players: [],
         loading: true
     })),
     on(AddOwnPlayer, (state, {players}) => ({
@@ -101,4 +102,4 @@ const _UsersReducer = createReducer(UsersInitialState,
 
 export function UsersReducer(state, action) {
     return _UsersReducer(state, action);
-  }
+}

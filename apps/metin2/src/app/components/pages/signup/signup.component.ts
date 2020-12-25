@@ -7,6 +7,10 @@ import { SignupService } from '@metin2/api';
 // RXJS
 import { Observable } from 'rxjs';
 
+// Store
+import { Store } from '@ngrx/store';
+import { AppState } from '@store';
+import { RegisterPlayer } from '@store/actions';
 
 @Component({
   selector: 'app-signup',
@@ -25,7 +29,8 @@ export class SignupComponent implements OnInit {
   checkbox: boolean;
 
   constructor(
-    public service: SignupService
+    public service: SignupService,
+    private store: Store<AppState>
   ) {
     this.form = new FormGroup({
       login: new FormControl('', [
@@ -60,14 +65,19 @@ export class SignupComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.store.select('register').subscribe(({success}) => {
+      if(success){
+        alert('Usuario registrado con exito.')
+      }
+    })
   }
 
 
   send() {
-    const data = this.form.value;
-    delete data.password_again;
-    delete data.checkbox;
-    this.service.signup(data);
+    const { login, password, real_name, email, social_id } = this.form.value;
+    this.store.dispatch(RegisterPlayer({account: {
+      login, password, real_name, email, social_id
+    }}));
     this.form.reset();
   }
 
